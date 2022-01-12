@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="my-5">
+    <div class="row container mx-auto">
+        <div class="col-md-6 col-sm-12 mx-auto">
+            <div class="card card-body bg-light">
+                <div class="container">
+                    <h4 class="text-center">Login</h4><br>
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" placeholder="Username *" name="username" required> <br>
+                        <input type="password" class="form-control" placeholder="Password *" name="password" required><br>
+                        <div class="d-flex justify-content-center mb-2">
+                            <button type="submit" class="btn btn-success">Login <i class="bi bi-box-arrow-in-right"></i></button>
+                        </div>
+                        <p>Don't have an account? <a href="{% url 'signup' %}" class="text-success">Signup Here.</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

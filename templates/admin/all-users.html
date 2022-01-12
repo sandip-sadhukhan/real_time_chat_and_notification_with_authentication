@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-sm-12 mx-auto">
+        <div class="container my-5">
+            <h4 class="text-center">All Users</h4>
+            <hr>
+            <table class="table table-hover table-striped table-responsive text-center">
+                <thead class="table-dark">
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Link</th>
+                </thead>
+                <tbody>
+                    {% for user in allUsers %}
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <td>{{user.username}}</td>
+                        <td><a href="{% url 'adminChat' user.id %}" class="btn btn-sm btn-success"><i class="bi bi-link-45deg"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ user.username|json_script:"username"}}
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/admin/notification.js' %}"></script>
+{% endblock %}
